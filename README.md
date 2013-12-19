@@ -5,6 +5,8 @@ What it does
 ------------
 This script was built for a couple of Smokin Mils hosts to use for their merching website. It was designed specifically to extract the prices of items from the ‘Nex and SS’ friend chat; following the format laid out here http://services.runescape.com/m=forum/forums.ws?90,91,180,64006412
 
+View a live example here: http://ben-thomson.co.uk/sm/snow/  this example is using the chat log provided in `example\rsbot.txt` 
+
 How it works
 ------------
 1) Pass the chat log to the script.
