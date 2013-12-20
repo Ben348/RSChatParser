@@ -26,7 +26,7 @@ How it works
 How to use it
 -------------
 ### Include the file
-You need to include the 'nextss.php' file in your script before anything.
+You need to include the `nexss.php` file in your script before anything.
 
     include('nexss.php');
 
@@ -111,4 +111,4 @@ Improvements
 This is version 1 of the script, I have yet to finish version 2. Improvements that need to be made however are:
  - Pass your own items to the script so it can be used for universal friend chats.
  - Pass your own price/item matching parameters
- - Generate on the fly a fall-back system to stop the wrong prices being matched to items - includes manipulator
+ - Generate on the fly a fall-back system to stop the wrong prices being matched to items (Mainly for manipulator)
