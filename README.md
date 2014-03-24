@@ -15,11 +15,11 @@ How it works
 
 3) Each line that is passed is tested against a series of regular expressions to determine what kind of line it is. Lines will be given one of the following flags:
 
- - PROCESS (Default - tells the script the line still needs processing)
- - CHAT (General chitchat that isn't needed - nothing was matched)
- - PC (Someone asked for a price check of an item)
- - PRICE (Someone reported a price for a previous item someone requested)
- - ITEMPRICE (Someone reported an item with a price)
+ - **PROCESS** (Default - tells the script the line still needs processing)
+ - **CHAT** (General chitchat that isn't needed - nothing was matched)
+ - **PC** (Someone asked for a price check of an item)
+ - **PRICE** (Someone reported a price for a previous item someone requested)
+ - **ITEMPRICE** (Someone reported an item with a price)
 
 4) Magic happens and the correct items and prices are matched to each other.
 
@@ -27,40 +27,41 @@ How to use it
 -------------
 ### Include the file
 You need to include the `nexss.php` file in your script before anything.
-
-    include('nexss.php');
-
+````php
+include('nexss.php');
+````
 ### Example
 The example below passes a chat log text file to the script and extracts all items that have a price.
+````php
+// Createa a new parser class.
+$p = new Parser();
 
-    // Createa a new parser class.
-    $p = new Parser();
+// Read the file lines to an array.
+$lines = file('rsbot.txt', FILE_IGNORE_NEW_LINES);
 
-    // Read the file lines to an array.
-    $lines = file('rsbot.txt', FILE_IGNORE_NEW_LINES);
+// Matched items array.
+$items = array();
 
-    // Matched items array.
-    $items = array();
+// Object array.
+$objs = array();
 
-    // Object array.
-    $objs = array();
+// Process each line.
+foreach ($lines as $line)
+{
+    // Process the line
+    $obj = $p->process($line);
 
-    // Process each line.
-    foreach ($lines as $line)
+    // Only dump items that were matched to a price.
+    if($obj->items !== false)
     {
-        // Process the line
-        $obj = $p->process($line);
-
-        // Only dump items that were matched to a price.
-        if($obj->items !== false)
-        {
-            // Loop through each item returned and add to a master items array.
-            foreach ($obj->items as $item) {]
-                $items[] = $item;
-            }
+        // Loop through each item returned and add to a master items array.
+        foreach ($obj->items as $item) {]
+            $items[] = $item;
         }
     }
-    
+}
+````
+
 For each line processed an object will be returned, the object will have two members which can be accessed:
 - line object - Returns an objcet containg all information about the parsed line.
 - item object - Returns an array of items that were extracted from the line
